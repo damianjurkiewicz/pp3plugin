@@ -21,13 +21,17 @@ enum VisibilityFlags
 class ProjectProps
 {
 private:
-	inline static CSimpleIniA ini;
-	inline static CSimpleIniA::TNamesDepend sections;
-	inline static EntityExtender<ExtendedData> xData;
+        inline static CSimpleIniA ini;
+        inline static CSimpleIniA::TNamesDepend sections;
+        inline static EntityExtender<ExtendedData> xData;
+        static int GetIniInt(const char* section, const char* key, int defaultValue);
+        static float GetIniFloat(const char* section, const char* key, float defaultValue);
+        static bool IsManagedObjectValid(const CObject* object);
+        static void ResetManagedObjectState(ExtendedData& data);
 
 public:
-	ProjectProps();
-	static void ProcessDynamicObject(CObject* pObj);
+        ProjectProps();
+        static void ProcessDynamicObject(CObject* pObj);
 	static void ProcessStaticObject(CBuilding* pBuilding);
 	static void PlaceRelativeBuilding(CEntity* tar, CEntity* src, CVector off);
 
